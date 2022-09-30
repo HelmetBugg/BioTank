@@ -20,7 +20,7 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.45356, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.374476, 3.59282, 0.953744 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.660631, 0.750711, 0, -0.750711, 0.660631, 0.490927, 9.01541, 6.72495 )
