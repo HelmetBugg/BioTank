@@ -1,0 +1,26 @@
+extends KinematicBody
+
+export var speed = 14
+export var fall_acceleration = 75
+var velocity = Vector3.ZERO
+
+func _physics_process(delta):
+
+	var direction = Vector3.ZERO
+	if Input.is_action_pressed("turn_right"):
+		rotate_y(deg2rad(1))
+	if Input.is_action_pressed("turn_left"):
+		rotate_y(deg2rad(-1))
+	if Input.is_action_pressed("forward"):
+		direction.z += 1
+	if Input.is_action_pressed("reverse"):
+		direction.z -= 1
+	if direction != Vector3.ZERO:
+		direction = direction.normalized()
+		$Pivot.look_at(translation + direction, Vector3.UP)
+
+	#velocity.x = direction.x * speed
+	#velocity.z = direction.z * speed
+	velocity.y -= fall_acceleration * delta
+	velocity += Vector3(sin(rotation.y),0,cos(rotation.y))
+	#velocity = move_and_slide(velocity, Vector3.UP)
