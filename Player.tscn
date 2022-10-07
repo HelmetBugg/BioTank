@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 1, 1, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 1.2, 0.1, 0.9 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.510741, 0.52156, 0.511357 )
@@ -16,6 +19,11 @@ script = ExtResource( 1 )
 
 [node name="Character" type="MeshInstance" parent="Pivot"]
 mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="TankTop" type="MeshInstance" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0883998, 0.555173, 0 )
+mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
