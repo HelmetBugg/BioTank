@@ -4,9 +4,6 @@ export var gravity = Vector3.DOWN * 10
 export var speed = 4
 export var rot_speed = 0.85
 const Bullet = preload("res://Bullet.tscn")
-#export (PackedScene) var Bullet
-
-
 var velocity = Vector3.ZERO
 
 func _physics_process(delta):
@@ -25,9 +22,11 @@ func get_input(delta):
 		rotate_y(-rot_speed * delta)
 	if Input.is_action_pressed("turn_left"):
 		rotate_y(rot_speed * delta)
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
 	velocity.y = vy
 	if Input.is_action_just_pressed("fire"):
 		var b = Bullet.instance()
 		owner.add_child(b)
-		b.transform = $Muzzle.global_transform
+		b.transform = $Pivot/TankTop/Muzzle.global_transform
 		b.velocity = -b.transform.basis.z * b.muzzle_velocity
