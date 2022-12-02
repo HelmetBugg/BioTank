@@ -47,4 +47,16 @@ transform = Transform( 0.978487, 0.046086, -0.201093, 0, 0.97473, 0.223386, 0.20
 shadow_enabled = true
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.866, -14.6046, 3.75401 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6628, -14.6046, 0 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.22429, -14.6046, -7.29947 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7312, -14.6046, -12.5412 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6113, -14.6046, 5.8017 )

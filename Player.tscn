@@ -31,6 +31,11 @@ skeleton = NodePath("../..")
 [node name="Muzzle" type="Position3D" parent="Pivot/TankTop"]
 transform = Transform( 6.34823, 0, 0, 0, 0.615222, 0, 0, 0, 0.691979, -0.0175844, 0.00334432, -0.450128 )
 
+[node name="RayCast" type="RayCast" parent="Pivot/TankTop"]
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+debug_shape_thickness = 5
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00954026 )
 shape = SubResource( 2 )

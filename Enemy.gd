@@ -22,6 +22,7 @@ func _physics_process(delta):
 func kill():
 	dead = true
 	$CollisionShape.disabled = true
+	queue_free()
  
 func set_player(p):
 	player = p
