@@ -6,6 +6,11 @@ export var rot_speed = 0.85
 const Bullet = preload("res://Bullet.tscn")
 var velocity = Vector3.ZERO
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	yield(get_tree(), "idle_frame")
+	get_tree().call_group("enemies", "set_player", self)
+
 func _physics_process(delta):
 	velocity += gravity * delta
 	get_input(delta)
