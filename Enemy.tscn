@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
-[ext_resource path="res://enemy_sprite_placeholder.png" type="Texture" id=2]
+[ext_resource path="res://enemy_sprite_bug.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.803713
@@ -15,7 +15,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 0.154586, 0, 0, 0, 0.154586, 0, 0, 0, 1, 0, 0, 0 )
 billboard = 2
 texture = ExtResource( 2 )
-hframes = 5
-vframes = 2
