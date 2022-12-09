@@ -3,35 +3,32 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Reticle.png" type="Texture" id=2]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
-
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 1, 1, 1 )
-
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 1.2, 0.1, 0.9 )
+[ext_resource path="res://biotank_top.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://biotank_base.obj" type="ArrayMesh" id=5]
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.510741, 0.52156, 0.511357 )
+extents = Vector3( 1.59728, 0.613283, 1.3074 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
-[node name="Character" type="MeshInstance" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 0.314854, 0, 0, 0, 1, 0, -0.339112, 0 )
-mesh = SubResource( 1 )
+[node name="Base" type="MeshInstance" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0602384, -0.339112, 0 )
+mesh = ExtResource( 5 )
 skeleton = NodePath("../..")
 
 [node name="TankTop" type="MeshInstance" parent="Pivot"]
-transform = Transform( 0.157524, 0, 0, 0, 1.62543, 0, 0, 0, 1.44513, 0.00276998, -0.10189, -0.319628 )
-mesh = SubResource( 3 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0592599, -0.250402, 0.0230925 )
+mesh = ExtResource( 4 )
 skeleton = NodePath("../..")
 
 [node name="Muzzle" type="Position3D" parent="Pivot/TankTop"]
 transform = Transform( 6.34823, 0, 0, 0, 0.615222, 0, 0, 0, 0.691979, -0.0175844, 0.00334432, -0.450128 )
 
 [node name="RayCast" type="RayCast" parent="Pivot/TankTop"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0620305, 1.0284, 1.7295 )
 enabled = true
 cast_to = Vector3( 0, 0, -1000 )
 debug_shape_thickness = 5

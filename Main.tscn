@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -17,6 +17,11 @@ size = Vector3( 60, 2, 60 )
 normal_enabled = true
 normal_scale = 16.0
 normal_texture = SubResource( 4 )
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="ConcavePolygonShape" id=7]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -43,10 +48,10 @@ transform = Transform( 1, 0, 0, 0, 0.944147, 0.0401587, 0, -0.329526, 0.115061, 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 8.20558, 0, 0.856866, 46.538 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.978487, 0.046086, -0.201093, 0, 0.97473, 0.223386, 0.206307, -0.218581, 0.953761, -14.8625, 10.6433, 1.01657 )
+transform = Transform( 0.978487, 0.0460862, -0.201094, 0, 0.97473, 0.223387, 0.206307, -0.218581, 0.953761, -6.31635, 10.6433, 1.01657 )
 shadow_enabled = true
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
+[node name="Enemy1" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88649, -15.0944, 24.8951 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
@@ -60,3 +65,43 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7312, -15.0944, -12.5412 )
 
 [node name="Enemy5" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6113, -15.0944, 5.8017 )
+
+[node name="Ramp1" type="MeshInstance" parent="."]
+transform = Transform( 2.43987, 0, 0, 0, 2.58183, 1.1765, 0, -0.979149, 3.10222, -15.4814, -17.5178, 0 )
+mesh = SubResource( 6 )
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody" parent="Ramp1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramp1/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="Ramp2" type="MeshInstance" parent="."]
+transform = Transform( -2.43636, -0.0506583, 0.167035, 0.00138323, 2.58425, 1.16883, -0.13073, 0.971447, -3.10062, 14.8442, -17.5178, 0 )
+mesh = SubResource( 6 )
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody" parent="Ramp2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramp2/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="Ramp3" type="MeshInstance" parent="."]
+transform = Transform( 0.121314, -0.977938, 3.09838, 0, 2.58183, 1.1765, -2.43685, -0.0486847, 0.154247, -1.07251, -17.5178, 15.1441 )
+mesh = SubResource( 6 )
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody" parent="Ramp3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramp3/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="Ramp4" type="MeshInstance" parent="."]
+transform = Transform( -0.251707, 0.967726, -3.08848, 0.00138323, 2.58425, 1.16883, 2.42685, 0.0988974, -0.320996, 0.435322, -17.5178, -15.1441 )
+mesh = SubResource( 6 )
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody" parent="Ramp4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramp4/StaticBody"]
+shape = SubResource( 7 )
