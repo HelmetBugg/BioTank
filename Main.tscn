@@ -76,7 +76,6 @@ skeleton = NodePath("")
 [node name="StaticBody" type="StaticBody" parent="Ramp1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Ramp1/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 7 )
 
 [node name="Ramp2" type="MeshInstance" parent="."]

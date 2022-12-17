@@ -1,6 +1,6 @@
 extends KinematicBody
  
-const MOVE_SPEED = 3
+const MOVE_SPEED = 12
 var player = null
 var dead = false
 var startingPosition
@@ -16,6 +16,7 @@ func _physics_process(delta):
 		return
 	var vec_to_player = player.translation - translation
 	vec_to_player = vec_to_player.normalized()
+	#rotation = vec_to_player.angle()
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
  
 func kill():
