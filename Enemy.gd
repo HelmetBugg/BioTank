@@ -16,8 +16,7 @@ func _physics_process(delta):
 		return
 	var vec_to_player = player.translation - translation
 	vec_to_player = vec_to_player.normalized()
-	var dic_to_player = Vector2(player.translation.x, player.translation.y) - Vector2(translation.x, translation.y)
-	rotate_y(dic_to_player.angle())
+	look_at(player.translation, Vector3.UP)
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
  
 func kill():
