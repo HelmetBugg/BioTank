@@ -5,6 +5,7 @@
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.76892, 1, 1.84336 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 60, 2, 60 )
@@ -34,6 +35,7 @@ transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
+transform = Transform( 1.76081, 0, 0, 0, 1, 0, 0, 0, 1.85654, 0, 0, 0 )
 mesh = SubResource( 2 )
 skin = SubResource( 3 )
 material/0 = SubResource( 5 )
@@ -52,19 +54,19 @@ transform = Transform( 0.978487, 0.0460862, -0.201094, 0, 0.97473, 0.223387, 0.2
 shadow_enabled = true
 
 [node name="Enemy1" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88649, -15.0944, 24.8951 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.3022, -15.0944, 51.1545 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6618, -15.0944, -8.32583 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7387, -15.0944, -52.1076 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48917, -15.0944, -20.6045 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7653, -15.0944, -53.6978 )
 
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7312, -15.0944, -12.5412 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4134, -15.0944, -52.4175 )
 
 [node name="Enemy5" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6113, -15.0944, 5.8017 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2865, -15.0944, 50.8168 )
 
 [node name="Ramp1" type="MeshInstance" parent="."]
 transform = Transform( 2.43987, 0, 0, 0, 2.58183, 1.1765, 0, -0.979149, 3.10222, -15.4814, -17.5178, 0 )
@@ -74,6 +76,7 @@ skeleton = NodePath("")
 [node name="StaticBody" type="StaticBody" parent="Ramp1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Ramp1/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 7 )
 
 [node name="Ramp2" type="MeshInstance" parent="."]
@@ -97,7 +100,7 @@ skeleton = NodePath("")
 shape = SubResource( 7 )
 
 [node name="Ramp4" type="MeshInstance" parent="."]
-transform = Transform( -0.251707, 0.967726, -3.08848, 0.00138323, 2.58425, 1.16883, 2.42685, 0.0988974, -0.320996, 0.435322, -17.5178, -15.1441 )
+transform = Transform( -0.252499, 0.970771, -3.0982, 0.00138758, 2.59238, 1.17251, 2.43449, 0.0992085, -0.322006, 0.435322, -17.5178, -15.1441 )
 mesh = SubResource( 6 )
 skeleton = NodePath("")
 
