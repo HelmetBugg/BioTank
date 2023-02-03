@@ -38,3 +38,5 @@ func get_input(delta):
 		if raycast.is_colliding() and coll.has_method("kill"):
 			coll.kill()
 
+func kill():
+	get_tree().change_scene("res://DeadScreen.tscn")

@@ -4,6 +4,7 @@ const MOVE_SPEED = 8
 var player = null
 var dead = false
 var startingPosition
+onready var raycast = $RayCast
  
 func _ready():	
 	add_to_group("enemies")
@@ -18,12 +19,26 @@ func _physics_process(delta):
 	vec_to_player = vec_to_player.normalized()
 	look_at(player.translation, Vector3.UP)
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
+
+func _process(delta):
+	attack()
+
+func attack():
+	var coll = raycast.get_collider()
+	if raycast.is_colliding() and coll.has_method("kill") and coll == player:
+		coll.kill()
  
+func open_inventory():
+	print("Here you go!")
+
 func kill():
-	#dead = true
-	#$CollisionShape.disabled = true
-	#queue_free()
-	transform.origin = startingPosition
+	rotate_x(deg2rad(int(180)))
+	dead = true
+	$CollisionShape.disabled = true	
  
 func set_player(p):
 	player = p
+
+func _on_Area_area_entered(area):
+	if dead:
+		queue_free()
