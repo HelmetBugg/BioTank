@@ -9,7 +9,6 @@ onready var raycast = $RayCast
 func _ready():	
 	add_to_group("enemies")
 	startingPosition = transform.origin
-	print("ready")
 	
 func _physics_process(delta):
 	if dead:
@@ -30,10 +29,9 @@ func attack():
 		coll.kill()
  
 func kill():
-	#dead = true
-	#$CollisionShape.disabled = true
-	#queue_free()
-	transform.origin = startingPosition
+	rotate_x(deg2rad(int(180)))
+	dead = true
+	$CollisionShape.disabled = true	
  
 func set_player(p):
 	player = p
