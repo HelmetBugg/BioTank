@@ -30,8 +30,11 @@ func get_input(delta):
 		rotate_y(rot_speed * delta)
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+	if Input.is_action_just_pressed("inventory_toggle"):
+		$InventoryContainer.visible = !$InventoryContainer.visible
 	velocity.y = vy
 	if Input.is_action_pressed("fire"):
 		var coll = raycast.get_collider()
 		if raycast.is_colliding() and coll.has_method("kill"):
 			coll.kill()
+
