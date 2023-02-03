@@ -37,4 +37,4 @@ func get_input(delta):
 			coll.kill()
 
 func kill():
-	print("You died")
+	get_tree().change_scene("res://DeadScreen.tscn")
