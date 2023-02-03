@@ -28,6 +28,9 @@ func attack():
 	if raycast.is_colliding() and coll.has_method("kill") and coll == player:
 		coll.kill()
  
+func open_inventory():
+	print("Here you go!")
+
 func kill():
 	rotate_x(deg2rad(int(180)))
 	dead = true
@@ -35,3 +38,7 @@ func kill():
  
 func set_player(p):
 	player = p
+
+func _on_Area_area_entered(area):
+	if dead:
+		queue_free()
