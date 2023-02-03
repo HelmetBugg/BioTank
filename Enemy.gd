@@ -4,10 +4,12 @@ const MOVE_SPEED = 8
 var player = null
 var dead = false
 var startingPosition
+onready var raycast = $RayCast
  
 func _ready():	
 	add_to_group("enemies")
 	startingPosition = transform.origin
+	print("ready")
 	
 func _physics_process(delta):
 	if dead:
@@ -18,6 +20,14 @@ func _physics_process(delta):
 	vec_to_player = vec_to_player.normalized()
 	look_at(player.translation, Vector3.UP)
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
+
+func _process(delta):
+	attack()
+
+func attack():
+	var coll = raycast.get_collider()
+	if raycast.is_colliding() and coll.has_method("kill") and coll == player:
+		coll.kill()
  
 func kill():
 	#dead = true

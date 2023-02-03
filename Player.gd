@@ -35,3 +35,6 @@ func get_input(delta):
 		var coll = raycast.get_collider()
 		if raycast.is_colliding() and coll.has_method("kill"):
 			coll.kill()
+
+func kill():
+	print("You died")

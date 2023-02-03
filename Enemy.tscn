@@ -17,3 +17,8 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.468356, 0, 0, 0, 0.468356, 0, 0, 0, 0.468356, 0, 0, 0 )
 mesh = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557275, -0.253932 )
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
