@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/rock_structures_1.obj-06814d03a70ff5b3c3a9329a67b8e864.mesh"
+
+[deps]
+
+files=[ "res://.import/rock_structures_1.obj-06814d03a70ff5b3c3a9329a67b8e864.mesh" ]
+
+source_file="res://res/rock_structures_1.obj"
+dest_files=[ "res://.import/rock_structures_1.obj-06814d03a70ff5b3c3a9329a67b8e864.mesh", "res://.import/rock_structures_1.obj-06814d03a70ff5b3c3a9329a67b8e864.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
