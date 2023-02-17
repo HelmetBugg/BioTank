@@ -21,13 +21,3 @@ func _on_ItemBody_input_event(viewport, event, shape_idx):
 		elif event.button_index == BUTTON_LEFT and !event.pressed:
 			position = original_position
 			dragging = false
-			
-
-
-
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	print("area2D") # Replace with function body.
-
-
-func _on_Area2D_area_entered(area):
-	print("area2D") # Replace with function body.
