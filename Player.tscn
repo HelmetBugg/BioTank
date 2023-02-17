@@ -79,15 +79,29 @@ margin_right = 1026.0
 margin_bottom = 604.0
 script = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="InventoryContainer"]
-position = Vector2( 508, 287 )
-scale = Vector2( 0.5, 0.5 )
+[node name="Player Inventory" type="Sprite" parent="InventoryContainer"]
+position = Vector2( 183.625, 194.625 )
+scale = Vector2( 0.355986, 0.678571 )
 texture = ExtResource( 6 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainer/Sprite"]
-margin_left = -40.0
-margin_top = -254.0
-margin_right = 60.0
-margin_bottom = -224.0
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainer/Player Inventory"]
+margin_left = -479.302
+margin_top = -270.605
+margin_right = -379.302
+margin_bottom = -240.605
 custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "Inventory"
+text = "Your Inventory"
+
+[node name="Enemy Inventory" type="Sprite" parent="InventoryContainer"]
+visible = false
+position = Vector2( 556, 196 )
+scale = Vector2( 0.355986, 0.678571 )
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainer/Enemy Inventory"]
+margin_left = -479.302
+margin_top = -270.605
+margin_right = -379.302
+margin_bottom = -240.605
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Enemy Inventory"
