@@ -1,4 +1,4 @@
-[gd_scene load_stepses=25 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -125,12 +125,16 @@ skeleton = NodePath(".")
 [node name="StaticBody" type="StaticBody" parent="scenery/ShortStactus"]
 
 [node name="CollisionShape" type="CollisionShape" parent="scenery/ShortStactus/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 10 )
 
 [node name="AverageCactus" type="MeshInstance" parent="scenery"]
 transform = Transform( 0.912463, 0, 0.409159, 0, 1, 0, -0.409159, 0, 0.912463, -14.3129, -15.9974, -19.4333 )
 mesh = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="scenery/AverageCactus"]
+
+[node name="CollisionShape" type="CollisionShape" parent="scenery/AverageCactus/StaticBody"]
+shape = SubResource( 11 )
 
 [node name="boulder1" type="MeshInstance" parent="scenery"]
 transform = Transform( 0.928031, 0, -0.372502, 0, 1, 0, 0.372502, 0, 0.928031, -6.51167, -15.6035, -37.4624 )
@@ -140,11 +144,6 @@ mesh = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="scenery/boulder1/StaticBody"]
 shape = SubResource( 10 )
-[node name="StaticBody" type="StaticBody" parent="scenery/AverageCactus"]
-
-[node name="CollisionShape" type="CollisionShape" parent="scenery/AverageCactus/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 11 )
 
 [node name="TallSquad" type="StaticBody" parent="scenery"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6025, 0, 48.4707 )
