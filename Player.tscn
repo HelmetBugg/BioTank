@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Reticle.png" type="Texture" id=2]
@@ -11,25 +11,6 @@
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.59728, 0.613283, 1.3074 )
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends CenterContainer
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 57.5865, 32.4211 )
@@ -82,9 +63,9 @@ margin_bottom = -85.0
 texture = ExtResource( 2 )
 
 [node name="InventoryContainer" type="CenterContainer" parent="."]
+visible = false
 margin_right = 1026.0
 margin_bottom = 604.0
-script = SubResource( 3 )
 
 [node name="PlayerInventory" type="Sprite" parent="InventoryContainer"]
 position = Vector2( 183.625, 194.625 )
@@ -101,6 +82,7 @@ text = "Your Inventory"
 
 [node name="ItemBody" type="KinematicBody2D" parent="InventoryContainer/PlayerInventory"]
 position = Vector2( -424, -220 )
+input_pickable = true
 script = ExtResource( 8 )
 
 [node name="InventoryItem" type="Sprite" parent="InventoryContainer/PlayerInventory/ItemBody"]
@@ -108,7 +90,6 @@ scale = Vector2( 1.78933, 1 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/PlayerInventory/ItemBody"]
-position = Vector2( -0.525124, -0.500145 )
 shape = SubResource( 5 )
 
 [node name="EnemyInventory" type="Sprite" parent="InventoryContainer"]

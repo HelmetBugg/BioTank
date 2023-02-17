@@ -4,7 +4,6 @@ var grabbed_offset = Vector2()
 var original_position = Vector2()
 var dragging = false
 
-
 func _process(delta):
 	if dragging:
 		var mousepos = get_viewport().get_mouse_position()
@@ -23,3 +22,12 @@ func _on_ItemBody_input_event(viewport, event, shape_idx):
 			position = original_position
 			dragging = false
 			
+
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	print("area2D") # Replace with function body.
+
+
+func _on_Area2D_area_entered(area):
+	print("area2D") # Replace with function body.

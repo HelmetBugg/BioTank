@@ -9,6 +9,7 @@ var velocity = Vector3.ZERO
 var enemyInventoryInRange = false
 
 func _ready():
+	$InventoryContainer.set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	yield(get_tree(), "idle_frame")
 	get_tree().call_group("enemies", "set_player", self)
