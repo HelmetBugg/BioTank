@@ -109,7 +109,6 @@ texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/PlayerInventory/ItemBody"]
 position = Vector2( -0.525124, -0.500145 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 5 )
 
 [node name="EnemyInventory" type="Sprite" parent="InventoryContainer"]
