@@ -40,6 +40,4 @@ func kill():
 func set_player(p):
 	player = p
 
-func _on_Area_area_entered(area):
-	if dead:
-		queue_free()
+

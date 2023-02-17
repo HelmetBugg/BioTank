@@ -6,6 +6,7 @@ export var rot_speed = 0.85
 onready var raycast = $Pivot/TankTop/RayCast
 const Bullet = preload("res://Bullet.tscn")
 var velocity = Vector3.ZERO
+var enemyInventoryInRange = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -32,11 +33,24 @@ func get_input(delta):
 		get_tree().quit()
 	if Input.is_action_just_pressed("inventory_toggle"):
 		$InventoryContainer.visible = !$InventoryContainer.visible
+		if enemyInventoryInRange:
+			$InventoryContainer/EnemyInventory.visible = !$InventoryContainer/EnemyInventory.visible
 	velocity.y = vy
 	if Input.is_action_pressed("fire"):
 		var coll = raycast.get_collider()
 		if raycast.is_colliding() and coll.has_method("kill"):
 			coll.kill()
 
+
 func kill():
 	get_tree().change_scene("res://DeadScreen.tscn")
+
+
+func _on_PlayerReach_area_entered(area):
+	if area.get_name() == 'EnemyRange':
+		enemyInventoryInRange = true
+
+
+func _on_PlayerReach_area_exited(area):
+	if area.get_name() == 'EnemyRange':
+		enemyInventoryInRange = false

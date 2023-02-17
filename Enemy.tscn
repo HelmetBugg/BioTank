@@ -26,10 +26,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557275, -0.253932 )
 enabled = true
 cast_to = Vector3( 0, 0, -1 )
 
-[node name="Area" type="Area" parent="."]
+[node name="EnemyRange" type="Area" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="EnemyRange"]
 transform = Transform( 1.11265, 0, 0, 0, 0.763864, 0, 0, 0, 1.47929, 0, 0.453896, 0.1927 )
 shape = SubResource( 2 )
-
-[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
