@@ -1,4 +1,4 @@
-[gd_scene load_stepses=25 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -79,16 +79,16 @@ transform = Transform( 0.978487, 0.0460862, -0.201094, 0, 0.97473, 0.223387, 0.2
 shadow_enabled = true
 
 [node name="Enemy1" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.3022, -15.0944, 51.1545 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7459, -15.028, 49.9907 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7387, -15.0944, -52.1076 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.224, -15.5513, -49.0111 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7653, -15.0944, -53.6978 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.6342, -16.1221, -52.5912 )
 
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4134, -15.0944, -52.4175 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7682, -15.2189, -49.4951 )
 
 [node name="Enemy5" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2865, -15.0944, 50.8168 )
@@ -125,12 +125,16 @@ skeleton = NodePath(".")
 [node name="StaticBody" type="StaticBody" parent="scenery/ShortStactus"]
 
 [node name="CollisionShape" type="CollisionShape" parent="scenery/ShortStactus/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 10 )
 
 [node name="AverageCactus" type="MeshInstance" parent="scenery"]
 transform = Transform( 0.912463, 0, 0.409159, 0, 1, 0, -0.409159, 0, 0.912463, -14.3129, -15.9974, -19.4333 )
 mesh = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="scenery/AverageCactus"]
+
+[node name="CollisionShape" type="CollisionShape" parent="scenery/AverageCactus/StaticBody"]
+shape = SubResource( 11 )
 
 [node name="boulder1" type="MeshInstance" parent="scenery"]
 transform = Transform( 0.928031, 0, -0.372502, 0, 1, 0, 0.372502, 0, 0.928031, -6.51167, -15.6035, -37.4624 )
@@ -140,11 +144,6 @@ mesh = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="scenery/boulder1/StaticBody"]
 shape = SubResource( 10 )
-[node name="StaticBody" type="StaticBody" parent="scenery/AverageCactus"]
-
-[node name="CollisionShape" type="CollisionShape" parent="scenery/AverageCactus/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 11 )
 
 [node name="TallSquad" type="StaticBody" parent="scenery"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6025, 0, 48.4707 )
@@ -285,3 +284,19 @@ mesh = ExtResource( 10 )
 [node name="AloePart" type="MeshInstance" parent="scenery/Aloe1"]
 transform = Transform( -0.961459, 0, -0.27495, 0, 1, 0, 0.27495, 0, -0.961459, 3.72287, -0.126079, 4.06918 )
 mesh = ExtResource( 10 )
+
+[node name="BigRock" type="MeshInstance" parent="scenery"]
+transform = Transform( 1, 0, 0, 0, 18, 0, 0, 0, 25, 48.6946, 2.2042, -32.0478 )
+mesh = ExtResource( 8 )
+
+[node name="LongRock" type="MeshInstance" parent="scenery"]
+transform = Transform( 1, 0, 0, 0, 25, 0, 0, 0, 25, -49.8122, -5.80887, -26.9842 )
+mesh = ExtResource( 11 )
+
+[node name="LongRock2" type="MeshInstance" parent="scenery"]
+transform = Transform( -1, 0, -2.62268e-06, 0, 30, 0, 8.74228e-08, 0, -30, 51.2348, -1.23784, 16.5814 )
+mesh = ExtResource( 11 )
+
+[node name="BigRock2" type="MeshInstance" parent="scenery"]
+transform = Transform( -1, 0, -4.52987e-06, 0, 20, 0, 1.50996e-07, 0, -30, -51.7722, 3.91342, 22.7537 )
+mesh = ExtResource( 8 )
