@@ -21,7 +21,8 @@ func _physics_process(delta):
 	move_and_collide(vec_to_player * MOVE_SPEED * delta)
 
 func _process(delta):
-	attack()
+	if !dead:
+		attack()
 
 func attack():
 	var coll = raycast.get_collider()
