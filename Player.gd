@@ -46,7 +46,7 @@ func get_input(delta):
 			$InventoryContainer.visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if enemyInventoryInRange:
-			$InventoryContainer/EnemyInventory.visible = !$InventoryContainer/EnemyInventory.visible
+			$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
 			
 	velocity.y = vy
 

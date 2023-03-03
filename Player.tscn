@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Reticle.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://InventoryItem.gd" type="Script" id=8]
 [ext_resource path="res://EnemyInventory.gd" type="Script" id=9]
+[ext_resource path="res://PlayerInventory.gd" type="Script" id=10]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.59728, 0.613283, 1.3074 )
@@ -16,8 +17,11 @@ extents = Vector3( 1.59728, 0.613283, 1.3074 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 57.5865, 32.4211 )
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 508.447, 283.684 )
+
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 508.447, 280.737 )
+extents = Vector2( 508.447, 289.948 )
 
 [sub_resource type="SphereShape" id=4]
 radius = 1.76976
@@ -67,7 +71,6 @@ margin_bottom = -85.0
 texture = ExtResource( 2 )
 
 [node name="InventoryContainer" type="CenterContainer" parent="."]
-visible = false
 margin_right = 1026.0
 margin_bottom = 604.0
 
@@ -81,6 +84,7 @@ margin_bottom = 302.0
 position = Vector2( -329.375, -107.375 )
 scale = Vector2( 0.355986, 0.678571 )
 texture = ExtResource( 6 )
+script = ExtResource( 10 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainer/PlayerGrid/PlayerInventory"]
 margin_left = -479.302
@@ -97,12 +101,21 @@ z_as_relative = false
 input_pickable = true
 script = ExtResource( 8 )
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody"]
+position = Vector2( 0, -4.57764e-05 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 5 )
+
 [node name="InventoryItem" type="Sprite" parent="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody"]
 scale = Vector2( 1.78933, 1 )
 texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody"]
-shape = SubResource( 5 )
+[node name="PlayerInventoryArea" type="Area2D" parent="InventoryContainer/PlayerGrid/PlayerInventory"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/PlayerGrid/PlayerInventory/PlayerInventoryArea"]
+position = Vector2( 1.05347, 4.23682 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 7 )
 
 [node name="EnemyGrid" type="GridContainer" parent="InventoryContainer"]
 margin_left = 513.0
@@ -112,7 +125,7 @@ margin_bottom = 302.0
 columns = 4
 
 [node name="EnemyInventory" type="Sprite" parent="InventoryContainer/EnemyGrid"]
-position = Vector2( 43, -106 )
+position = Vector2( 108, -106 )
 scale = Vector2( 0.355986, 0.678571 )
 texture = ExtResource( 6 )
 script = ExtResource( 9 )
@@ -126,9 +139,11 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Enemy Inventory"
 
 [node name="InventoryArea" type="Area2D" parent="InventoryContainer/EnemyGrid/EnemyInventory"]
+position = Vector2( -778.121, -116.421 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/EnemyGrid/EnemyInventory/InventoryArea"]
-position = Vector2( 0, 0.736786 )
+position = Vector2( 786.548, 117.526 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
 [node name="PlayerReach" type="Area" parent="."]
@@ -139,6 +154,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138305, 0.486265, 0.359179
 shape = SubResource( 4 )
 
 [connection signal="input_event" from="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody" to="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody" method="_on_ItemBody_input_event"]
+[connection signal="body_entered" from="InventoryContainer/PlayerGrid/PlayerInventory/PlayerInventoryArea" to="InventoryContainer/PlayerGrid/PlayerInventory" method="_on_PlayerInventoryArea_body_entered"]
+[connection signal="body_exited" from="InventoryContainer/PlayerGrid/PlayerInventory/PlayerInventoryArea" to="InventoryContainer/PlayerGrid/PlayerInventory" method="_on_PlayerInventoryArea_body_exited"]
 [connection signal="body_entered" from="InventoryContainer/EnemyGrid/EnemyInventory/InventoryArea" to="InventoryContainer/EnemyGrid/EnemyInventory" method="_on_InventoryArea_body_entered"]
 [connection signal="body_exited" from="InventoryContainer/EnemyGrid/EnemyInventory/InventoryArea" to="InventoryContainer/EnemyGrid/EnemyInventory" method="_on_InventoryArea_body_exited"]
 [connection signal="area_entered" from="PlayerReach" to="." method="_on_PlayerReach_area_entered"]
