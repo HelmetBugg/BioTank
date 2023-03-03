@@ -67,6 +67,7 @@ margin_bottom = -85.0
 texture = ExtResource( 2 )
 
 [node name="InventoryContainer" type="CenterContainer" parent="."]
+visible = false
 margin_right = 1026.0
 margin_bottom = 604.0
 
@@ -115,7 +116,6 @@ text = "Enemy Inventory"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/EnemyInventory/InventoryArea"]
 position = Vector2( 0, 0.736786 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
 [node name="PlayerReach" type="Area" parent="."]
@@ -127,5 +127,6 @@ shape = SubResource( 4 )
 
 [connection signal="input_event" from="InventoryContainer/PlayerInventory/ItemBody" to="InventoryContainer/PlayerInventory/ItemBody" method="_on_ItemBody_input_event"]
 [connection signal="body_entered" from="InventoryContainer/EnemyInventory/InventoryArea" to="InventoryContainer/EnemyInventory" method="_on_InventoryArea_body_entered"]
+[connection signal="body_exited" from="InventoryContainer/EnemyInventory/InventoryArea" to="InventoryContainer/EnemyInventory" method="_on_InventoryArea_body_exited"]
 [connection signal="area_entered" from="PlayerReach" to="." method="_on_PlayerReach_area_entered"]
 [connection signal="area_exited" from="PlayerReach" to="." method="_on_PlayerReach_area_exited"]
