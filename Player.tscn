@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Reticle.png" type="Texture" id=2]
@@ -8,12 +8,16 @@
 [ext_resource path="res://black_background.png" type="Texture" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://InventoryItem.gd" type="Script" id=8]
+[ext_resource path="res://EnemyInventory.gd" type="Script" id=9]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.59728, 0.613283, 1.3074 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 57.5865, 32.4211 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 508.447, 280.737 )
 
 [sub_resource type="SphereShape" id=4]
 radius = 1.76976
@@ -63,7 +67,6 @@ margin_bottom = -85.0
 texture = ExtResource( 2 )
 
 [node name="InventoryContainer" type="CenterContainer" parent="."]
-visible = false
 margin_right = 1026.0
 margin_bottom = 604.0
 
@@ -82,6 +85,8 @@ text = "Your Inventory"
 
 [node name="ItemBody" type="KinematicBody2D" parent="InventoryContainer/PlayerInventory"]
 position = Vector2( -424, -220 )
+z_index = 1
+z_as_relative = false
 input_pickable = true
 script = ExtResource( 8 )
 
@@ -93,10 +98,10 @@ texture = ExtResource( 7 )
 shape = SubResource( 5 )
 
 [node name="EnemyInventory" type="Sprite" parent="InventoryContainer"]
-visible = false
 position = Vector2( 556, 196 )
 scale = Vector2( 0.355986, 0.678571 )
 texture = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InventoryContainer/EnemyInventory"]
 margin_left = -479.302
@@ -106,6 +111,13 @@ margin_bottom = -240.605
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Enemy Inventory"
 
+[node name="InventoryArea" type="Area2D" parent="InventoryContainer/EnemyInventory"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/EnemyInventory/InventoryArea"]
+position = Vector2( 0, 0.736786 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 6 )
+
 [node name="PlayerReach" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147252, 0, -0.343571 )
 
@@ -114,5 +126,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138305, 0.486265, 0.359179
 shape = SubResource( 4 )
 
 [connection signal="input_event" from="InventoryContainer/PlayerInventory/ItemBody" to="InventoryContainer/PlayerInventory/ItemBody" method="_on_ItemBody_input_event"]
+[connection signal="body_entered" from="InventoryContainer/EnemyInventory/InventoryArea" to="InventoryContainer/EnemyInventory" method="_on_InventoryArea_body_entered"]
 [connection signal="area_entered" from="PlayerReach" to="." method="_on_PlayerReach_area_entered"]
 [connection signal="area_exited" from="PlayerReach" to="." method="_on_PlayerReach_area_exited"]
