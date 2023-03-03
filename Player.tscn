@@ -18,10 +18,10 @@ extents = Vector3( 1.59728, 0.613283, 1.3074 )
 extents = Vector2( 57.5865, 32.4211 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 508.447, 283.684 )
+extents = Vector2( 512.661, 289.579 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 508.447, 289.948 )
+extents = Vector2( 518.279, 289.948 )
 
 [sub_resource type="SphereShape" id=4]
 radius = 1.76976
@@ -71,6 +71,7 @@ margin_bottom = -85.0
 texture = ExtResource( 2 )
 
 [node name="InventoryContainer" type="CenterContainer" parent="."]
+visible = false
 margin_right = 1026.0
 margin_bottom = 604.0
 
@@ -103,7 +104,6 @@ script = ExtResource( 8 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody"]
 position = Vector2( 0, -4.57764e-05 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 5 )
 
 [node name="InventoryItem" type="Sprite" parent="InventoryContainer/PlayerGrid/PlayerInventory/ItemBody"]
@@ -113,11 +113,12 @@ texture = ExtResource( 7 )
 [node name="PlayerInventoryArea" type="Area2D" parent="InventoryContainer/PlayerGrid/PlayerInventory"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/PlayerGrid/PlayerInventory/PlayerInventoryArea"]
-position = Vector2( 1.05347, 4.23682 )
+position = Vector2( 5.26703, -1.65817 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 7 )
 
 [node name="EnemyGrid" type="GridContainer" parent="InventoryContainer"]
+visible = false
 margin_left = 513.0
 margin_top = 302.0
 margin_right = 513.0
@@ -142,7 +143,7 @@ text = "Enemy Inventory"
 position = Vector2( -778.121, -116.421 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryContainer/EnemyGrid/EnemyInventory/InventoryArea"]
-position = Vector2( 786.548, 117.526 )
+position = Vector2( 776.716, 117.526 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
