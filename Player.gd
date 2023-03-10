@@ -9,6 +9,7 @@ var velocity = Vector3.ZERO
 var enemyInventoryInRange = false
 var killable = false
 var currentInRangeEnemy = null
+const item = preload("res://Item.tscn")
 
 func _ready():
 	$InventoryContainer.set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
@@ -48,7 +49,11 @@ func get_input(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if enemyInventoryInRange and !currentInRangeEnemy == null:
 			$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
-			print(currentInRangeEnemy.get_parent().inventory)
+			#print(currentInRangeEnemy.get_parent().inventory)
+			var item1 = item.instance()
+			var inventory = currentInRangeEnemy.get_parent().inventory
+			item1.get_node("Sprite").texture=load(inventory[0])
+			$InventoryContainer/EnemyGrid.add_child(item1)
 	velocity.y = vy
 
 

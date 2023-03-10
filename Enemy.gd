@@ -5,7 +5,7 @@ var player = null
 var dead = false
 var startingPosition
 onready var raycast = $RayCast
-onready var inventory = 1
+onready var inventory = ["res://res/icons/beetle_armor.png","res://res/icons/mantis_arm.png","res://res/icons/spider_legs.png"]
 
 func _ready():	
 	add_to_group("enemies")
