@@ -5,6 +5,7 @@ var player = null
 var dead = false
 var startingPosition
 onready var raycast = $RayCast
+var inventory = 1
  
 func _ready():	
 	add_to_group("enemies")

@@ -8,6 +8,7 @@ var currentLocation = null
 func _process(delta):
 	if dragging:
 		self.global_position = get_global_mouse_position()
+
 func _on_ItemBody_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:

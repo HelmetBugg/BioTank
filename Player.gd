@@ -8,6 +8,7 @@ const Bullet = preload("res://Bullet.tscn")
 var velocity = Vector3.ZERO
 var enemyInventoryInRange = false
 var killable = false
+var currentInRangeEnemy = null
 
 func _ready():
 	$InventoryContainer.set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
@@ -45,9 +46,9 @@ func get_input(delta):
 		else:
 			$InventoryContainer.visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		if enemyInventoryInRange:
+		if enemyInventoryInRange and !currentInRangeEnemy == null:
 			$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
-			
+			print(currentInRangeEnemy.get_parent().inventory)
 	velocity.y = vy
 
 
@@ -59,8 +60,10 @@ func kill():
 func _on_PlayerReach_area_entered(area):
 	if area.get_name() == 'EnemyRange':
 		enemyInventoryInRange = true
+		currentInRangeEnemy = area
 
 
 func _on_PlayerReach_area_exited(area):
 	if area.get_name() == 'EnemyRange':
 		enemyInventoryInRange = false
+		currentInRangeEnemy = null
