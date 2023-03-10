@@ -48,14 +48,20 @@ func get_input(delta):
 			$InventoryContainer.visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if enemyInventoryInRange and !currentInRangeEnemy == null:
-			$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
-			#print(currentInRangeEnemy.get_parent().inventory)
-			var item1 = item.instance()
-			var inventory = currentInRangeEnemy.get_parent().inventory
-			item1.get_node("Sprite").texture=load(inventory[0])
-			$InventoryContainer/EnemyGrid.add_child(item1)
+			displayEnemyInventory()
+			
 	velocity.y = vy
 
+func displayEnemyInventory():
+	var spawned_items = []
+	var inventory = currentInRangeEnemy.get_parent().inventory
+	var i = 0
+	while i < inventory.size():
+		spawned_items.push_back(item.instance())
+		spawned_items[i].get_node("Sprite").texture = load(inventory[i])
+		$InventoryContainer/EnemyGrid.add_child(spawned_items[i])
+		i += 1
+	$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
 
 func kill():
 	if killable:
