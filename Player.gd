@@ -17,10 +17,12 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	get_tree().call_group("enemies", "set_player", self)
 
+
 func _physics_process(delta):
 	velocity += gravity * delta
 	get_input(delta)
 	velocity = move_and_slide(velocity, Vector3.UP)
+
 
 func get_input(delta):
 	var vy = velocity.y
@@ -49,8 +51,8 @@ func get_input(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if enemyInventoryInRange and !currentInRangeEnemy == null:
 			displayEnemyInventory()
-			
 	velocity.y = vy
+
 
 func displayEnemyInventory():
 	var spawned_items = []
@@ -60,8 +62,10 @@ func displayEnemyInventory():
 		spawned_items.push_back(item.instance())
 		spawned_items[i].get_node("Sprite").texture = load(inventory[i])
 		$InventoryContainer/EnemyGrid.add_child(spawned_items[i])
+		spawned_items[i].position.x = spawned_items[i].position.x + (50 * i)
 		i += 1
 	$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
+
 
 func kill():
 	if killable:
