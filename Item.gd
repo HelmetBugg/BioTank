@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 var original_position = Vector2()
 var dragging = false
@@ -9,7 +9,8 @@ func _process(delta):
 	if dragging:
 		self.global_position = get_global_mouse_position()
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
+
+func _on_Item_input_event2(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			original_position = self.global_position
@@ -22,5 +23,4 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			else:
 				get_parent().remove_child(self)
 				currentLocation.add_child(self)
-				print("Parent got")
 				self.global_position = get_global_mouse_position()

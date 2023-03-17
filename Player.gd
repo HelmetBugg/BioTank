@@ -61,10 +61,11 @@ func displayEnemyInventory():
 	while i < inventory.size():
 		spawned_items.push_back(item.instance())
 		spawned_items[i].get_node("Sprite").texture = load(inventory[i])
-		$InventoryContainer/EnemyGrid.add_child(spawned_items[i])
-		spawned_items[i].position.x = spawned_items[i].position.x + (50 * i)
+		$InventoryContainer/EnemyInventory.add_child(spawned_items[i])
+		spawned_items[i].position.y = 100
+		spawned_items[i].position.x = 50 + spawned_items[i].position.x + (50 * i)
 		i += 1
-	$InventoryContainer/EnemyGrid.visible = !$InventoryContainer/EnemyGrid.visible
+	$InventoryContainer/EnemyInventory.visible = !$InventoryContainer/EnemyInventory.visible
 
 
 func kill():
