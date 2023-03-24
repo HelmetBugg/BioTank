@@ -79,7 +79,6 @@ margin_bottom = 604.0
 script = ExtResource( 10 )
 
 [node name="ItemBody" type="KinematicBody2D" parent="InventoryContainer/PlayerInventory"]
-visible = false
 position = Vector2( 61, 114 )
 scale = Vector2( 0.52, 1 )
 z_index = 1

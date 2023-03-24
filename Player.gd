@@ -10,6 +10,8 @@ var enemyInventoryInRange = false
 var killable = false
 var currentInRangeEnemy = null
 const item = preload("res://Item.tscn")
+var inventory = []
+
 
 func _ready():
 	$InventoryContainer.set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
@@ -40,23 +42,42 @@ func get_input(delta):
 	if Input.is_action_pressed("fire"):
 		var coll = raycast.get_collider()
 		if raycast.is_colliding() and coll.has_method("kill"):
-			coll.kill()		
+			coll.kill()
 	if Input.is_action_just_pressed("inventory_toggle"):
-		if !$InventoryContainer.visible:
-			$InventoryContainer.visible = true
-			Input.set_mouse_mode(0);
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			$InventoryContainer.visible = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		if enemyInventoryInRange and !currentInRangeEnemy == null:
-			displayEnemyInventory()
+		toggleInventory()
 	velocity.y = vy
 
 
+func toggleInventory():
+	# Open Inventory	
+	if !$InventoryContainer.visible:
+		displayPlayerInventory()
+		$InventoryContainer.visible = true
+		Input.set_mouse_mode(0);
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if enemyInventoryInRange and !currentInRangeEnemy == null:
+			displayEnemyInventory()
+		
+	# Close Inventory
+	else:
+		$InventoryContainer.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		closeInventory(self, $InventoryContainer/PlayerInventory/PlayerInventoryArea)
+		if enemyInventoryInRange and !currentInRangeEnemy == null:
+			closeInventory(currentInRangeEnemy.get_parent(), $InventoryContainer/EnemyInventory/InventoryArea)
+
+
+func displayPlayerInventory():
+	displayInventory(self.inventory)
+
+
 func displayEnemyInventory():
-	var spawned_items = []
-	var inventory = currentInRangeEnemy.get_parent().inventory
+	displayInventory(currentInRangeEnemy.get_parent().inventory)
+	$InventoryContainer/EnemyInventory.visible = !$InventoryContainer/EnemyInventory.visible
+
+
+func displayInventory(inventory):
+	var spawned_items = []	
 	var i = 0
 	while i < inventory.size():
 		spawned_items.push_back(item.instance())
@@ -65,7 +86,14 @@ func displayEnemyInventory():
 		spawned_items[i].position.y = 100
 		spawned_items[i].position.x = 50 + spawned_items[i].position.x + (50 * i)
 		i += 1
-	$InventoryContainer/EnemyInventory.visible = !$InventoryContainer/EnemyInventory.visible
+
+
+func closeInventory(owner, inventoryContainer):
+	owner.inventory.clear()
+	for item in inventoryContainer.get_overlapping_bodies():
+		if item.get_parent().get_node("Sprite"):
+			owner.inventory.push_back(item.get_parent().get_node("Sprite").texture)
+			item.queue_free()
 
 
 func kill():
@@ -74,12 +102,12 @@ func kill():
 
 
 func _on_PlayerReach_area_entered(area):
-	if area.get_name() == 'EnemyRange':
+	if area.get_name() == 'EnemyRange' and area.get_parent().dead:
 		enemyInventoryInRange = true
 		currentInRangeEnemy = area
 
 
 func _on_PlayerReach_area_exited(area):
-	if area.get_name() == 'EnemyRange':
+	if area.get_name() == 'EnemyRange' and area.get_parent().dead:
 		enemyInventoryInRange = false
 		currentInRangeEnemy = null
